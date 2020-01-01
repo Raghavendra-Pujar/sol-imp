@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-5 col-md-offset-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">View Booking</div>
+      <div class="panel-body">
+        <p>Enter Booking Id:</p>
+        <input class="form-control" [(ngModel)]="bookingId" type="text">
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="getBooking()">Get Details</button>
+        <div *ngIf="errorMessage!=null">
+          <span class="text text-danger">{{errorMessage}}</span>
+        </div>
+        <div *ngIf="selectedBooking!=null">
+          <br>
+          <table class="table table-bordered">
+            <tr>
+              <th>Buffet Name</th>
+              <th>Email ID</th>
+              <th>Plate Count</th>
+            </tr>
+            <tr>
+              <td>{{ selectedBooking.buffetName }}</td>
+              <td>{{ selectedBooking.emailId }}</td>
+              <td>{{ selectedBooking.plateCount | plateCount }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
