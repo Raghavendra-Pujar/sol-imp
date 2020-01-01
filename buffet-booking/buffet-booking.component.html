@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-5 col-md-offset-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Buffet Reservation</div>
+            <div class="panel-body">
+                <form [formGroup]="buffetBookingForm" (ngSubmit)="bookBuffet()" class="form">
+                    <div class="form-group">
+                        <label for="buffetName">Buffet Name: </label>
+                        <select class="form-control" formControlName="buffetName" id="buffetName">
+                            <option disabled value="">Select a buffet</option>
+                            <option value="SouthIndianFestivalSpecial">South Indian Festival Special</option>
+                            <option value="NorthIndianFestivalSpecial">North Indian Festival Special</option>
+                            <option value="ChineeseSpecial">Chineese Special</option>
+                        </select>
+                        <span id="buffetNameError" class="error-message" *ngIf="!buffetBookingForm.controls.buffetName.valid && buffetBookingForm.controls.buffetName.dirty">Field required</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailId">Email Id: </label>
+                        <input type="email" class="form-control" formControlName="emailId" id="emailId">
+                        <span id = "emailIdError" class="error-message" *ngIf="!buffetBookingForm.controls.emailId.valid && buffetBookingForm.controls.emailId.dirty">Enter the valid email id</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="plateCount">Plate count: </label>
+                        <input type="number" class="form-control" formControlName="plateCount" id="plateCount">
+                        <span id="plateCountError" class="error-message" *ngIf="!buffetBookingForm.controls.plateCount.valid && buffetBookingForm.controls.plateCount.dirty">Plate count should be more than 0</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookedOn">Booked on: </label>
+                        <input type="date" class="form-control" formControlName="bookedOn" id="bookedOn">
+                        <span id="bookedOnError" class="error-message" *ngIf="!buffetBookingForm.controls.bookedOn.valid && buffetBookingForm.controls.bookedOn.dirty">Enter the valid booked on field</span>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit" [disabled]="!buffetBookingForm.valid">Book Buffet</button>
+                    </div>
+                </form>
+                <div *ngIf="errorMessage!=null">
+                    <span class="text text-danger">{{errorMessage}}</span>
+                </div>
+                <div *ngIf="successMessage!=null">
+                    <span class="text text-success">{{successMessage}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
